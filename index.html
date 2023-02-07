@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Quantum Splitter</title>
+
+    <script src="./script.js" defer></script>
+    
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body class="dark">
+    
+    
+    <div id="theme-toggle">
+    
+        <button id="light-button">
+            <p>L</p>
+        </button>
+
+        <button id="dark-button">
+            <p>D</p>
+        </button>
+    </div>
+
+
+    <div id="main-div">
+        <header>
+            <h1 id="title">Universe Splitter</h1>
+        </header>
+
+        <!-- Should this be a form for accessability or other reason? -->
+        <form class="button-and-slider-container container">
+            <div class="main-button-container">
+                <button class="main-button"
+                aria-label="Split Universe">
+                    <p>
+                        Split Universe
+                    </p>
+                </button>
+                <span class="loading-image-container">
+                    <img class="loading-image"
+                    src="./Spinner-1s-200px.gif" alt="">
+                </span>
+            </div>
+
+            <div class="slider-container">
+                <input class="slider" type="range" min="1" max="10" value="2"
+                aria-label="Number of Universes Slider">
+                <p>
+                    <span class="num-universes-display"> 2 </span>
+                </p>
+            </div>
+        </form>
+        
+        <ul class="output-area container">
+            <li></li>
+        </ul>
+
+        
+    </div>
+    <!-- TODO: add server select somewhere -->
+    <footer class="footer container">
+        <a href="https://cheapuniverses.com/">
+            Inspired By
+        </a>
+        <a href="./explanation.html">Explanation</a>
+        <!-- <select name="server-select" id="server-select">
+            <option value="test">WIP</option>
+            <option value="test2">ANU old</option>
+            <option value="test2">Work In Progress</option>
+        </select> -->
+        <a href="https://github.com/tomernahum"> <!--TODO: replace with this projects repo-->
+            Source Code
+        </a>
+        <a href="mailto: contact@ttools.io">Email</a>
+
+        <!--  <div>LM</div> -->
+    </footer>
+</body>
+</html>

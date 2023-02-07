@@ -1,0 +1,41 @@
+Todo List:
+- A lot of weird stuff on mobile i have no idea why :`(
+- Semantic HTML + HTML SEO
+- Animations
+
+- More efficient api calling
+- Select different Servers
+
+- Prevent errors from asking for more than 1 split per second
+
+- (Possibly rewrite everything (use Sass this time))
+
+
+Ideas:
+Footer 1: inspiration, github, contact , maybe explanation (seperate page)
+Footer 2 (where else to put it?): Source, cacheUniverses checkbox with ?
+
+
+
+
+
+
+To Do List:
+- better position / decide position the dark mode button
+- change html tags for better accessability // maybe SEO
+- animate in list additions. 
+Also scroll automatically to them.
+Also maybe make them show up on top instead of bottom
+
+- Color the button and button highlight
+- Style the theme switching button
+- Add Name and context of universe splitter app / theory (maybe)
+
+- Make it scrollable past the end text for convienient use on mobile
+- more efficient api calling
+
+- maybe make the button truly center idk
+- maybe make the darkmode toggle to right of main column not whole viewport (or may put in bottom bar with info button)
+
+- allow selection of universe splitting source (fake, anu, any others)
+- Make it responsive to smart watches
