@@ -262,10 +262,12 @@ Not sure if this is best approach or not*/
 .footer {
     display:flex;
     justify-content: space-between;
+    justify-content: space-around;
     
     align-items: center;
     flex-wrap:wrap;
     gap: 5px;
+    gap: 10px;
 
     border: 1.5px solid gray;
     /* width: 95%; */
@@ -290,20 +292,29 @@ Not sure if this is best approach or not*/
     
     /* border: 1.5px solid grey; */
     padding:1px 3px;
+    font-size: 59%;
+    
+    /* flex:1; */
+    /* flex-basis: 10ch; */
 }
 
 /* Footer Sizing */
-/* Not working properly on my phone */
+/* Not working properly on my phone (but does in browser dev tools) */
 .footer > *{
-    font-size: min(calc(5vw - 2px), 60%);
+    /* font-size: min(calc(5vw - 2px), 60%); */
+    
+    /* flex:1; */
+    /* flex-basis: 10ch; */
 }
 
+/* 
 @media screen and (max-width: 200px) {
     .footer > *{
         font-size: 16px ;
-        /* background-color: green; */
+        /* background-color: green; * /
     }
-}
+} 
+*/
 
 
 

@@ -1,3 +1,7 @@
+
+
+
+
 Todo List:
 - A lot of weird stuff on mobile i have no idea why :`(
 - Semantic HTML + HTML SEO
@@ -13,7 +17,21 @@ Todo List:
 
 Ideas:
 Footer 1: inspiration, github, contact , maybe explanation (seperate page)
-Footer 2 (where else to put it?): Source, cacheUniverses checkbox with ?
+Footer 2 (where else to put it?): Source, cacheUniverses checkbox with (?) hover
+
+We Need:
+- inspired By
+- explanation
+- source code // star me on github
+- Email Feedback OR feedback which opens menu of email, github issues,
+- Add to homescreen / install PWA
+
+- API Source dropdown, 
+- cacheUniverses checkbox with (?) hover
+
+Ideas:
+inspired by, explanation, add to homescreen
+source code, feedback
 
 
 
