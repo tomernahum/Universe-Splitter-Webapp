@@ -259,7 +259,7 @@ Not sure if this is best approach or not*/
 
 
 
-.footer {
+.footer-box {
     display:flex;
     justify-content: space-between;
     justify-content: space-around;
@@ -279,14 +279,8 @@ Not sure if this is best approach or not*/
     transition: margin-bottom 600ms;
 }
 
-@media screen and (min-height: 1200px) {
-    .footer {
-        margin-bottom: 30vh;
-    }
-}
 
-
-.footer > *{
+.footer-box > *{
     /* font-size: 50%; Seems to do it relative to default font size so font size variable still affects it */
     text-align: center;
     
@@ -298,24 +292,12 @@ Not sure if this is best approach or not*/
     /* flex-basis: 10ch; */
 }
 
-/* Footer Sizing */
-/* Not working properly on my phone (but does in browser dev tools) */
-.footer > *{
-    /* font-size: min(calc(5vw - 2px), 60%); */
-    
-    /* flex:1; */
-    /* flex-basis: 10ch; */
-}
 
-/* 
-@media screen and (max-width: 200px) {
-    .footer > *{
-        font-size: 16px ;
-        /* background-color: green; * /
+@media screen and (min-height: 1200px) {
+    .footer {
+        margin-bottom: 30vh;
     }
-} 
-*/
-
+}
 
 
 #server-select {
