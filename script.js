@@ -1,5 +1,18 @@
 "use strict"
 
+// ----- PWA / Service Worker Registration ------
+
+//register the serviceworker
+if ("serviceWorker" in navigator){
+    navigator.serviceWorker.register("/sw.js")
+    .then((reg) => console.log("service worker registered", reg))
+    .catch((err) => console.error("service worker failed to register", err))
+}
+
+// ----------------------------------------------
+
+
+
 //TODO: organize this stuff better
 const body = document.querySelector("body")
 const themeButton = document.querySelector("#theme-toggle")
