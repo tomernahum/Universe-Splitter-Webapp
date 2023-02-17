@@ -1,3 +1,19 @@
+Temp Todo List (do next):
+1. Second navbar with server select & pre-split option (+ the js code for it)
+    - Potentially: make it hover at bottom of screen like the button hovers at top, but keep the real navbar non-hover
+2. potentially: rework output to put new stuff at top, errors somewhere else, and store history locally, (+ maybe make it not take 2 lines same method as split)
+3. Basic SEO stuff like meta description
+4. Make a second page with more traditional U-split (Enter in two choices and pick one), then maybe make that the main page and link to the page we got
+5. then advertise it somewhere
+
+Other (potentially):
+- Make sure vh is good for mobile
+- Animations
+- "Star me" popup when hovering on source code
+- Replace Email with feedback and when you click it make a list of places to feedback (github issues, email, maybe discord or zendesk lol)
+- Improve colors
+- make output take 1 line on smaller devices
+- Maybe: allow manual editing of universes number if you click the number
 
 
 
@@ -28,6 +44,8 @@ We Need:
 
 - API Source dropdown, 
 - cacheUniverses checkbox with (?) hover
+
+- dark mode toggle
 
 Ideas:
 inspired by, explanation, add to homescreen
