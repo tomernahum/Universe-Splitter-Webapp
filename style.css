@@ -267,7 +267,7 @@ Not sure if this is best approach or not*/
     align-items: center;
     flex-wrap:wrap;
     gap: 5px;
-    gap: 10px;
+    /* gap: 10px; */
 
     border: 1.5px solid gray;
     /* width: 95%; */
@@ -289,7 +289,7 @@ Not sure if this is best approach or not*/
     font-size: 59%;
     
     /* flex:1; */
-    /* flex-basis: 10ch; */
+    flex-basis: 11ch;
 }
 
 
