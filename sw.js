@@ -11,6 +11,9 @@ const RESOURCES_TO_PRECACHE = [
     "/explanation.html",
     "/Spinner-1s-200px.gif",
     "/manifest.json",
+
+    //temp fix attempt for cloudflare redirect
+    "/explanation",
      
     //I think favicons etc dont need to be included but im not sure
     "/images/icons/favicon.ico",
