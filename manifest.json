@@ -1,8 +1,8 @@
 {
     "name": "Universe Splitter",
     "short_name": "U-Split",
-    "theme_color": "#44465c",
-    "background_color": "#44465c",
+    "theme_color": "#35235e",
+    "background_color": "#050532", 
     "display": "standalone",
     "orientation": "portrait-primary",
     "scope": ".",
