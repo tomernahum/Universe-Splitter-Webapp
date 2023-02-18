@@ -17,67 +17,68 @@
     <meta name="msapplication-config" content="/images/icons/browserconfig.xml">
     <meta name="theme-color" content="#35235e">
 
-    <link rel="stylesheet" href="style.css">
-    <script src="./script.js" defer></script>
-
+    <link rel="stylesheet" href="style.css"> 
     <style>
-        * { 
-            box-sizing: border-box;
+        /* Base Style loaded above --kind of quick and dirty*/
+        #main-div p, #main-div li, #main-div a {
+            font-size: calc(var(--font-size)* 0.7);
         }
-        body {
-            background-color: rgb(0, 81, 135);
-            background-color: rgb(5, 5, 50);
-            color: white;
-
-            font-size: 1.5rem;
-
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 80ch;
-            
-            padding: 12px;
-
-            /* display: flex;
-            flex-direction: column;
-            align-items: center; */
-
-            
-        }
-        
-        a:visited{
-            color: mediumorchid;
-        }
-        a:link{
-            color: lightskyblue;
-        }
-        p {
-            margin:0;
-        }
-        ul {
-            margin-top: 10px;
-        }
-        li{
-            margin-top:10px;
-        }
-
     </style>
+    <script>
+        //Duplicate code in here for now. TODO: break js into modules and make it reusable across different pages
+        
+        let body;
+        window.addEventListener("DOMContentLoaded", () => {
+            const themeButton = document.querySelector("#theme-toggle")
+            themeButton.addEventListener("click", toggleTheme);
+            
+            body = document.querySelector("body")
+        })
+        
+
+        function toggleTheme(){
+            if (body.classList.contains("light")) {
+                body.classList.replace('light', 'dark')
+            }
+            else {
+                body.classList.replace('dark', 'light')
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="./style.css">
+    
 </head>
-<body>
-    <!-- TODO: style this and include dark mode -->
-    <h1>Explanation of Universe Splitting</h1>
-    <p>I haven't written this yet.</p>
-    <p>Check out these explanations that our competitors have written:</p>
-    <ul>
-        <li>
-            <a href="http://www.cheapuniverses.com/explain1.html">
-                Universe Splitter from Aerfish
-            </a>
-        </li>
-        <li>
-            <a href="https://freeuniversesplitter.com/about">
-                freeuniversesplitter.com
-            </a>
-        </li>
-    </ul>
+<body class="dark">
+    <div id="theme-toggle">
+    
+        <button id="light-button">
+            <p>L</p>
+        </button>
+
+        <button id="dark-button">
+            <p>D</p>
+        </button>
+    </div>
+    <div id="main-div">
+        <div class="container">
+            <h1>Explanation of Universe Splitting</h1>
+            <p>I haven't written this yet.</p>
+            <p>Check out these explanations that our competitors have written:</p>
+            <ul>
+                <li>
+                    <a href="http://www.cheapuniverses.com/explain1.html">
+                        Universe Splitter from Aerfish
+                    </a>
+                </li>
+                <li>
+                    <a href="https://freeuniversesplitter.com/about">
+                        freeuniversesplitter.com
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
 </body>
 </html>

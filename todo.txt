@@ -14,7 +14,9 @@ Other (potentially):
 - Improve colors
 - make output take 1 line on smaller devices
 - Maybe: allow manual editing of universes number if you click the number
-
+- indicator hidden somewhere of whether stuff is cached locally? (or just in the console)
+- make explanation theming consistent
+- cache light/dark mode preference and if its not cached then set it according to system preferences
 
 
 
