@@ -24,7 +24,11 @@
 
 <body class="dark no-transition">
     <script>
-        //------- Set theme based on before ---------
+        //------- Set theme based on localstorage ---------
+        window.addEventListener("DOMContentLoaded", ()=>{
+            setInitialTheme()
+        })
+
         function setInitialTheme(override=null){
             const preferredTheme = override || localStorage.getItem("preferred_theme") 
             console.log("prefered theme", preferredTheme)
@@ -40,9 +44,18 @@
             body.offsetHeight; // Trigger a reflow, flushing the CSS changes //copied from stackoverflow
             body.classList.remove("no-transition") //turn back on css animations
         }
-        window.addEventListener("DOMContentLoaded", ()=>{
-            setInitialTheme()
-        })
+        
+        /**
+        * @param {string} theme should be dark or light
+        */
+        function setTheme(theme){
+            if (body.classList.contains("light")) {
+                body.classList.replace('light', theme)
+            }
+            else {
+                body.classList.replace('dark', theme)
+            }
+        }
     </script>
     
     <div id="theme-toggle">

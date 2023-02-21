@@ -149,7 +149,7 @@ function setInitialTheme(override=null){
     body.classList.remove("no-transition") //turn back on css animations
 }
 window.addEventListener("DOMContentLoaded", ()=>{
-    setInitialTheme()
+    //setInitialTheme()
 })
 
 
