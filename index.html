@@ -30,15 +30,15 @@
         })
 
         async function setInitialTheme(override=null){
-            const preferredThemeLocalStorage = await override || localStorage.getItem("preferred_theme")
+            const preferredThemeLocalStorage = override || localStorage.getItem("preferred_theme")
                                                ||  getInitialPreferredThemeAndUpdateLocalStorage()
 
-            await body.classList.add("no-transition") //turn off css animations
+            body.classList.add("no-transition") //turn off css animations
             // console.log("Hello")
-            await setTheme(preferredThemeLocalStorage)
+            setTheme(preferredThemeLocalStorage)
             // console.log("Set it")
-            await body.offsetHeight; // Trigger a reflow, flushing the CSS changes (copied from stackoverflow)
-            await body.classList.remove("no-transition") //turn back on css animations
+            body.offsetHeight; // Trigger a reflow, flushing the CSS changes (copied from stackoverflow)
+            body.classList.remove("no-transition") //turn back on css animations
         }
 
         function getInitialPreferredThemeAndUpdateLocalStorage(){
