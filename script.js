@@ -115,12 +115,12 @@ const sliderDisplay2 = mainDiv.querySelector(".slider-container .num-universes-d
 
 sliderDisplay2.innerText = slider2.value;
 
-
+console.log(slider2)
 slider2.addEventListener("input", (e)=> {
     const slider = e.currentTarget
     const value = slider2.value
     
-    // console.log(value)
+    console.log(value)
     sliderDisplay2.innerText = value;
 })
 
@@ -130,13 +130,24 @@ slider2.addEventListener("input", (e)=> {
 //  --- Theme Button ----
 
 // initial theme - check preference from local storage
-const preferredTheme = localStorage.getItem("preferred_theme") 
-if (preferredTheme === null) {
-    localStorage.setItem("preferred_theme", "dark")
-    preferredTheme = "dark"
-}
+function setInitialTheme(override=null){
+    const preferredTheme = override || localStorage.getItem("preferred_theme") 
+    if (preferredTheme === null) {
+        localStorage.setItem("preferred_theme", "dark")
+        preferredTheme = "dark"
+    }
 
-setTheme(preferredTheme)
+    body.classList.add("no-transition") //turn off css animations
+    console.log("Hello")
+    setTheme(preferredTheme)
+    console.log("Set it")
+    body.offsetHeight; // Trigger a reflow, flushing the CSS changes //copied from stackoverflow
+    body.classList.remove("no-transition") //turn back on css animations
+}
+setInitialTheme()
+
+
+
 
 function onThemeButtonClick(){
     toggleTheme()
