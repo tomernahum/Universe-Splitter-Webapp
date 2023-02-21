@@ -30,10 +30,12 @@ p {
 .light {
     --background-color: white;
     --text-color: rgb(5, 5, 50);
+    color-scheme: light;
 }
 .dark {
     --background-color: rgb(5, 5, 50);
     --text-color: white;
+    color-scheme: dark;
 }
 
 /* For js to add when it doesn't want transitions */
