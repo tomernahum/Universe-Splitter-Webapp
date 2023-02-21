@@ -17,6 +17,7 @@ Other (potentially):
 - indicator hidden somewhere of whether stuff is cached locally? (or just in the console)
 - make explanation theming consistent
 - cache light/dark mode preference and if its not cached then set it according to system preferences
+- pick an open source license and add it to the github
 
 
 
