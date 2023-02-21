@@ -131,26 +131,26 @@ slider2.addEventListener("input", (e)=> {
 
 //  --- Theme Button ----
 
-// runs on window.onload
-function setInitialTheme(override=null){
-    const preferredTheme = override || localStorage.getItem("preferred_theme") 
-    console.log("prefered theme", preferredTheme)
+// moved to html file to load faster
+// function setInitialTheme(override=null){
+//     const preferredTheme = override || localStorage.getItem("preferred_theme") 
+//     console.log("prefered theme", preferredTheme)
     
-    if (preferredTheme === null) {
-        localStorage.setItem("preferred_theme", "dark")
-        preferredTheme = "dark"
-    }
+//     if (preferredTheme === null) {
+//         localStorage.setItem("preferred_theme", "dark")
+//         preferredTheme = "dark"
+//     }
 
-    body.classList.add("no-transition") //turn off css animations
-    console.log("Hello")
-    setTheme(preferredTheme)
-    console.log("Set it")
-    body.offsetHeight; // Trigger a reflow, flushing the CSS changes //copied from stackoverflow
-    body.classList.remove("no-transition") //turn back on css animations
-}
-window.addEventListener("DOMContentLoaded", ()=>{
-    //setInitialTheme()
-})
+//     body.classList.add("no-transition") //turn off css animations
+//     console.log("Hello")
+//     setTheme(preferredTheme)
+//     console.log("Set it")
+//     body.offsetHeight; // Trigger a reflow, flushing the CSS changes //copied from stackoverflow
+//     body.classList.remove("no-transition") //turn back on css animations
+// }
+// window.addEventListener("DOMContentLoaded", ()=>{
+//     //setInitialTheme()
+// })
 
 
 

@@ -11,7 +11,7 @@ Other (potentially):
 - Animations
 - "Star me" popup when hovering on source code
 - Replace Email with feedback and when you click it make a list of places to feedback (github issues, email, maybe discord or zendesk lol)
-- Improve colors
+- Improve colors esp of button
 - make output take 1 line on smaller devices
 - Maybe: allow manual editing of universes number if you click the number
 - indicator hidden somewhere of whether stuff is cached locally? (or just in the console)

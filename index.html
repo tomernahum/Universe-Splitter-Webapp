@@ -24,25 +24,31 @@
 
 <body class="dark no-transition">
     <script>
-        //------- Set theme based on localstorage ---------
+        //------- Set theme based on remembered preference---------
         window.addEventListener("DOMContentLoaded", ()=>{
             setInitialTheme()
         })
 
         function setInitialTheme(override=null){
-            const preferredTheme = override || localStorage.getItem("preferred_theme") 
-            console.log("prefered theme", preferredTheme)
-            if (preferredTheme === null) {
-                localStorage.setItem("preferred_theme", "dark")
-                preferredTheme = "dark"
-            }
+            const preferredThemeLocalStorage = override || localStorage.getItem("preferred_theme")
+                                               ||  getInitialPreferredThemeAndUpdateLocalStorage()
 
             body.classList.add("no-transition") //turn off css animations
-            console.log("Hello")
-            setTheme(preferredTheme)
-            console.log("Set it")
-            body.offsetHeight; // Trigger a reflow, flushing the CSS changes //copied from stackoverflow
+            // console.log("Hello")
+            setTheme(preferredThemeLocalStorage)
+            // console.log("Set it")
+            body.offsetHeight; // Trigger a reflow, flushing the CSS changes (copied from stackoverflow)
             body.classList.remove("no-transition") //turn back on css animations
+        }
+
+        function getInitialPreferredThemeAndUpdateLocalStorage(){
+            const systemPreferredThemeIsDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            if (systemPreferredThemeIsDark){
+                localStorage.setItem("preferred_theme", "dark")
+                return "dark"
+            }
+            localStorage.setItem("preferred_theme", "light")
+            return "light"
         }
         
         /**
