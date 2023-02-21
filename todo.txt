@@ -18,6 +18,8 @@ Other (potentially):
 - make explanation theming consistent
 - cache light/dark mode preference and if its not cached then set it according to system preferences
 - pick an open source license and add it to the github
+- make sure accessability is good (see firefox dev tools as start)
+- rename dark and light classes to darkmode and light mode.   maybe rename preferred theme to theme idk
 
 
 APIs I know about (have not looked deeply at all of them):

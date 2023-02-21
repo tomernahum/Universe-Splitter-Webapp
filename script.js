@@ -39,9 +39,11 @@ window.onload = () => {
         onButtonClick();
     })
 
-
+    
 
     window.numUniverses = slider.value
+
+    //setInitialTheme()
 }
 
 
@@ -129,9 +131,11 @@ slider2.addEventListener("input", (e)=> {
 
 //  --- Theme Button ----
 
-// initial theme - check preference from local storage
+// runs on window.onload
 function setInitialTheme(override=null){
     const preferredTheme = override || localStorage.getItem("preferred_theme") 
+    console.log("prefered theme", preferredTheme)
+    
     if (preferredTheme === null) {
         localStorage.setItem("preferred_theme", "dark")
         preferredTheme = "dark"
@@ -144,7 +148,9 @@ function setInitialTheme(override=null){
     body.offsetHeight; // Trigger a reflow, flushing the CSS changes //copied from stackoverflow
     body.classList.remove("no-transition") //turn back on css animations
 }
-setInitialTheme()
+window.addEventListener("DOMContentLoaded", ()=>{
+    setInitialTheme()
+})
 
 
 
