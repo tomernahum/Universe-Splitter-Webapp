@@ -29,16 +29,16 @@
             setInitialTheme()
         })
 
-        function setInitialTheme(override=null){
-            const preferredThemeLocalStorage = override || localStorage.getItem("preferred_theme")
+        async function setInitialTheme(override=null){
+            const preferredThemeLocalStorage = await override || localStorage.getItem("preferred_theme")
                                                ||  getInitialPreferredThemeAndUpdateLocalStorage()
 
-            body.classList.add("no-transition") //turn off css animations
+            await body.classList.add("no-transition") //turn off css animations
             // console.log("Hello")
-            setTheme(preferredThemeLocalStorage)
+            await setTheme(preferredThemeLocalStorage)
             // console.log("Set it")
-            body.offsetHeight; // Trigger a reflow, flushing the CSS changes (copied from stackoverflow)
-            body.classList.remove("no-transition") //turn back on css animations
+            await body.offsetHeight; // Trigger a reflow, flushing the CSS changes (copied from stackoverflow)
+            await body.classList.remove("no-transition") //turn back on css animations
         }
 
         function getInitialPreferredThemeAndUpdateLocalStorage(){
