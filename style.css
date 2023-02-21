@@ -36,6 +36,11 @@ p {
     --text-color: white;
 }
 
+/* For js to add when it doesn't want transitions */
+.no-transition *, .no-transition {
+    transition: none !important;
+}
+
 /* dark mode button */
 /* Dark mode is controlled by adding dark or light class to body w/ javascripts */
 

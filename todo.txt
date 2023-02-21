@@ -20,8 +20,32 @@ Other (potentially):
 - pick an open source license and add it to the github
 
 
+APIs I know about (have not looked deeply at all of them):
+- anu deprecated api: https://qrng.anu.edu.au/
+- anu paid aws api: https://qrng.anu.edu.au/ https://quantumnumbers.anu.edu.au/
+    - Maybe make backend (with _base) to cache universe splits to save on costs (would be transparent with users about this)
 
-Todo List:
+- ETHZ (does not seem to work but its likely i dont understand REST apis) (one that was reccomended in review of universe splitter unnoficial) http://qrng.ethz.ch/http_api/
+- hu-berlin (requires download of a program? and sample data is downloaded as .bin) (need to look into it but seems like it might need a backend) https://qrng.physik.hu-berlin.de/download 
+
+- cypto focused one found on google search: https://www.quantumblockchains.io/quantum-cryptography-qrng-qkd/qrng-api/
+- Look into IBM Qiskit might be a default provider?
+
+- Find More:
+    - Google qrng (quantum random numbers) "-anu" to exclude anu
+    - ! https://pypi.org/project/qrng/ -- references IBM Qiskit which has backend providers (so search for qiskit providers) https://quantum-computing.ibm.com/lab/docs/iql/manage/provider/#open-provider https://github.com/ozaner/qRNG https://pypi.org/project/qiskit/
+    - academic wiki it seems (weird api sources like hu-berlin) https://www.quantiki.org/wiki/quantum-random-number-generators
+    - read the articles https://www.google.com/search?client=firefox-b-1-d&q=qrng+alibaba+cloud
+    - where is this implementation? https://www.semanticscholar.org/paper/Quantum-generators-of-random-numbers-Jacak-J%C3%B3zwiak/135c8a6eb0d62ceefe89aca52a95f9b5055bd662
+    - Not sure what this is https://github.com/openqbit-diy/MiniQRNG
+    - 
+    
+- If anyone actually uses the app and funds it (probably wouldn't) could hypothetically buy a quantum device and set up a server of my own https://www.idquantique.com/random-number-generation/products/
+- Can add "true" random but not quantum (eg whatever random.org has) https://en.wikipedia.org/wiki/List_of_random_number_generators#Random_number_generators_that_use_external_entropy 
+
+- Example of someone using ibm i think https://github.com/openqbit-diy/MiniQRNG  https://github.com/AFOEK/Quantum_Random_Number_Generator_Flask/blob/main/main.py
+
+Todo List Old:
 - A lot of weird stuff on mobile i have no idea why :`(
 - Semantic HTML + HTML SEO
 - Animations

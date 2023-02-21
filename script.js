@@ -115,12 +115,12 @@ const sliderDisplay2 = mainDiv.querySelector(".slider-container .num-universes-d
 
 sliderDisplay2.innerText = slider2.value;
 
-
+console.log(slider2)
 slider2.addEventListener("input", (e)=> {
     const slider = e.currentTarget
     const value = slider2.value
     
-    // console.log(value)
+    console.log(value)
     sliderDisplay2.innerText = value;
 })
 
@@ -128,16 +128,61 @@ slider2.addEventListener("input", (e)=> {
 
 
 //  --- Theme Button ----
+
+// initial theme - check preference from local storage
+function setInitialTheme(override=null){
+    const preferredTheme = override || localStorage.getItem("preferred_theme") 
+    if (preferredTheme === null) {
+        localStorage.setItem("preferred_theme", "dark")
+        preferredTheme = "dark"
+    }
+
+    body.classList.add("no-transition") //turn off css animations
+    console.log("Hello")
+    setTheme(preferredTheme)
+    console.log("Set it")
+    body.offsetHeight; // Trigger a reflow, flushing the CSS changes //copied from stackoverflow
+    body.classList.remove("no-transition") //turn back on css animations
+}
+setInitialTheme()
+
+
+
+
 function onThemeButtonClick(){
     toggleTheme()
+    localStorage.setItem("preferred_theme",getCurrentTheme())
+}
+
+function getCurrentTheme(){
+    if (body.classList.contains("light")) {
+        return "light"
+    }
+    else if  (body.classList.contains("dark")){
+        return "dark"
+    }
+    console.error("Theme broken")
+    return "dark"
 }
 
 function toggleTheme(){
-    if (body.classList.contains("light")) {
-        body.classList.replace('light', 'dark')
+    if (getCurrentTheme() === "light") {
+        setTheme("dark")
     }
     else {
-        body.classList.replace('dark', 'light')
+        setTheme("light")
+    }
+}
+
+/**
+* @param {string} theme should be dark or light
+*/
+function setTheme(theme){
+    if (body.classList.contains("light")) {
+        body.classList.replace('light', theme)
+    }
+    else {
+        body.classList.replace('dark', theme)
     }
 }
 //
