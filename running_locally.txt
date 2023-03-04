@@ -1,0 +1,18 @@
+
+1)
+I have deployed this on cloudflare pages
+it is best to use their local server command line tool Wrangler to preview the files
+
+cloudflare pages has a few quirks compared to other simple servers such as github pages or popular html file previewing vscode extensions,
+namely it gets rid of the .html at the end of urls, and url addresses affect offline caching for this PWA
+
+
+Install: `npm install -g wrangler` (u need node and npm)
+Run: `wrangler pages dev <THIS-DIRECTORY>`
+
+
+2)
+Also the way I have it currently set up the service worker caches everything locally, 
+in order to actually update stuff on the page you have to go into sw.js and change CHACHE_NAME so it updates the cache
+this was the way I was tutorialized to do it, im sure theres a better way but I havn't done it
+or check update on reload / bypass for network in chrome dev tools > application > service workers

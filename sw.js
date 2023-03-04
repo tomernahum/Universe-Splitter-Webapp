@@ -2,17 +2,17 @@
 
 //ts-check
 
-const CACHE_NAME = "cache-v1";
+const CACHE_NAME = "cache-v2"; //have to change version number to update the cache. I feel there has to be a better way / a way to do this automatically but it was too hard to find and I dont want to use workbox. Seems to me you could do this essentially with 2 caches automatically or update the 1 cache for next time right after you return from it so its speedy return but updated if the user is online
 const RESOURCES_TO_PRECACHE = [
     "/",
     "/index.html",
     "/script.js",
     "/style.css",
-    "/explanation.html",
+    //"/explanation.html",
     "/Spinner-1s-200px.gif",
     "/manifest.json",
 
-    //temp fix attempt for cloudflare redirect
+    //cloudflare gets rid of .html so caching breaks if you cache it so you have to run with cloudflare local server now to test it
     "/explanation",
     
     //I think favicons etc dont need to be included but im not sure
@@ -33,34 +33,86 @@ self.addEventListener("install", e => {
     e.waitUntil(
         caches.open(CACHE_NAME)
         .then(cache => {
-            return cache.addAll(RESOURCES_TO_PRECACHE) //? does this cache from the previous service workers intercept aka from the old cache or from the real internet - I'd hope the later but I ran into bug that implies former. AKA does it ask for a fetch request and go through existing service worker
+            return cache.addAll(RESOURCES_TO_PRECACHE) //? does this cache from the previous service workers intercept aka from the old cache or from the real internet, since it runs fetch. probably latter.
         })
     )
 });
 
 
 //_activate Event_
-self.addEventListener("activate", e => {
-    console.log("service worker activated", e)
+self.addEventListener("activate", event => {
+    console.log("service worker activatedd", event)
+
+    //delete any old caches besides the allowed one ^^ CACHE_NAME
+    event.waitUntil(
+        caches.keys().then(keys_of_caches => {
+            return Promise.all(
+                keys_of_caches
+                .filter(key => key !== CACHE_NAME) //get list of keys besides cach name
+                .map(key => caches.delete(key)) //returns array of promises...
+            )
+        })
+    )
 })
 
 
 
 //Intercept fetch requests
 self.addEventListener("fetch", e => {
-    console.log("fetch event", e)
-    
-    //TODO/BUG/Research: this is returning from the cache even if its old. if user is online it should prefer the online version - maybe should try fetch request first then if that fails return cacheresponse? or maybe theres way to check if user is offline quicker - should look up reccomended way to do this...
-    //Or maybe can update the cache somewhere other than the install event since that isn't triggered if the html files change only if sw.js file changes
-    //ok so switching it is bad ig because its slower which defeats part of the point of caching? Why not use the old cache install the next one for the next time they visit just like the install event
-    //https://web.dev/learn/pwa/update/#update-patterns
+    //console.log("fetch event", e)
 
     e.respondWith( //intercept the fetch request and handle it yourself
         caches.match(e.request) //query the cache for the thing being requested
         .then(cacheResponse => {
-            console.log("cache response:", cacheResponse)
+            //console.log("cache response:", cacheResponse)
             return (cacheResponse || fetch(e.request))  //return cahceReponse, unless its falsy (eg null), then make the fetch request yourself and return that 
             //can do .then on fetch to update the cache dynamically if the files not in there
         })
     )
 })
+
+
+//Intercept fetch requests, wrote it myself, not in use, no idea if it works
+/*self.addEventListener("fetch", e => {
+    console.log("fetch event", e)
+
+    e.respondWith( //intercept the fetch request and handle it yourself
+        
+        caches.match(e.request) //query the cache for the thing being requested
+        .then(cacheResponse => {
+            //console.log("cache response:", cacheResponse)
+
+            const it_was_not_in_the_cache = cacheResponse == undefined;
+
+            if (it_was_not_in_the_cache){
+                return fetch(e.request) .then(fetchResponse => {
+                    updateCacheAsset(e.request.url, fetchResponse.clone())
+                })
+            }
+            else //if it was in the cache
+            {
+                setTimeout(()=>updateCacheAsset(e.request.url)) //runs it asyncronously
+                return cacheResponse
+            }
+
+            return (cacheResponse || fetch(e.request))
+        }) 
+    )
+})
+*/
+
+/** 
+ * @param {string} url
+ * @param {Response} [response] optional
+*/
+function updateCacheAsset(url, response="Default", cacheName=CACHE_NAME)
+{
+    caches.open(cacheName).then(cache => {
+        if (response === "Default")
+            cache.add(url)
+        else {
+            cache.put(url, response)
+            //no error checking probably bad
+        }
+    })
+}
