@@ -4,7 +4,8 @@ Temp Todo List (do next):
 2. potentially: rework output to put new stuff at top, errors somewhere else, and store history locally, (+ maybe make it not take 2 lines same method as split)
 3. Basic SEO stuff like meta description
 4. Make a second page with more traditional U-split (Enter in two choices and pick one), then maybe make that the main page and link to the page we got
-5. then advertise it somewhere
+5. Analytics
+6. then advertise it somewhere
 
 Other (potentially):
 - Make sure vh is good for mobile
