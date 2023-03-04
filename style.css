@@ -30,10 +30,18 @@ p {
 .light {
     --background-color: white;
     --text-color: rgb(5, 5, 50);
+    color-scheme: light;
 }
 .dark {
     --background-color: rgb(5, 5, 50);
+    /* --background-color: hsl(106, 100%, 19%); */
     --text-color: white;
+    color-scheme: dark;
+}
+
+/* For js to add when it doesn't want transitions */
+.no-transition *, .no-transition {
+    transition: none !important;
 }
 
 /* dark mode button */

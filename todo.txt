@@ -3,20 +3,31 @@ Temp Todo List (do next):
     - Potentially: make it hover at bottom of screen like the button hovers at top, but keep the real navbar non-hover
 2. potentially: rework output to put new stuff at top, errors somewhere else, and store history locally, (+ maybe make it not take 2 lines same method as split)
 3. Basic SEO stuff like meta description
+    - Figure out image for previews on twitter/messaging/etc
+    - keywords tag (?)
+    - look into anything else needed
+3.5 About page
+    - for seo, self promotion, and explanation
 4. Make a second page with more traditional U-split (Enter in two choices and pick one), then maybe make that the main page and link to the page we got
-5. then advertise it somewhere
+5. Analytics
+6. then advertise it somewhere
 
 Other (potentially):
 - Make sure vh is good for mobile
 - Animations
 - "Star me" popup when hovering on source code
 - Replace Email with feedback and when you click it make a list of places to feedback (github issues, email, maybe discord or zendesk lol)
-- Improve colors
+- Improve colors esp of button
 - make output take 1 line on smaller devices
 - Maybe: allow manual editing of universes number if you click the number
 - indicator hidden somewhere of whether stuff is cached locally? (or just in the console)
 - make explanation theming consistent
 - cache light/dark mode preference and if its not cached then set it according to system preferences
+- pick an open source license and add it to the github
+- make sure accessability is good (see firefox dev tools as start)
+- rename dark and light classes to darkmode and light mode.   maybe rename preferred theme to theme idk
+- maybe get fonts (rn its just default font - I like the way it looks on my phone)
+-
 
 
 APIs I know about (have not looked deeply at all of them):
