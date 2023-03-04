@@ -2,11 +2,14 @@
 
 // ----- PWA / Service Worker Registration ------
 
-//register the serviceworker
+//register the serviceWorker
 if ("serviceWorker" in navigator){
     navigator.serviceWorker.register("/sw.js")
-    .then((reg) => console.log("service worker registered", reg))
-    .catch((err) => console.error("service worker failed to register", err))
+    .then((reg) => {
+        console.log("service worker registered successfullyy", reg)
+        
+    })
+    .catch((err) => console.error("service worker failed to register", err)) //registration failed
 }
 
 // ----------------------------------------------

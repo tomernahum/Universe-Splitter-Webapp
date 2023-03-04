@@ -34,6 +34,7 @@ p {
 }
 .dark {
     --background-color: rgb(5, 5, 50);
+    /* --background-color: hsl(106, 100%, 19%); */
     --text-color: white;
     color-scheme: dark;
 }

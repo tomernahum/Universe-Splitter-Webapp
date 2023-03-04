@@ -20,6 +20,7 @@ Other (potentially):
 - pick an open source license and add it to the github
 - make sure accessability is good (see firefox dev tools as start)
 - rename dark and light classes to darkmode and light mode.   maybe rename preferred theme to theme idk
+- maybe get fonts (rn its just default font - I like the way it looks on my phone)
 
 
 APIs I know about (have not looked deeply at all of them):
