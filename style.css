@@ -25,14 +25,15 @@ p {
 
 
     --background-transition-speed: 500ms
+    /* --background-transition-speed: 4000ms */
 }
 
-.light {
+:root[data-theme="light"] {
     --background-color: white;
     --text-color: rgb(5, 5, 50);
     color-scheme: light;
 }
-.dark {
+:root[data-theme="dark"] {
     --background-color: rgb(5, 5, 50);
     /* --background-color: hsl(106, 100%, 19%); */
     --text-color: white;
@@ -69,22 +70,23 @@ p {
     line-height: 100%;
 }
 
-.light #dark-button {
+[data-theme="light"] #dark-button {
     opacity: 0%;
 }
-.dark #light-button {
+[data-theme="dark"] #light-button {
     opacity: 0%;
 }
 /* ------ */
 
 
-body{
+
+body {
     background-color: var(--background-color);
     transition: background-color var(--background-transition-speed);
     color: var(--text-color);
     
     margin-top: 0;
-margin-bottom: 0;
+    margin-bottom: 0;
     /* For footer primarily */
     display: flex;
     flex-direction: column;
@@ -101,10 +103,10 @@ margin-bottom: 0;
 }
 /*  */
 
-.dark a:visited{
+[data-theme="dark"] a:visited{
     color: mediumorchid;
 }
-.dark a:link{
+[data-theme="dark"] a:link{
     color: lightskyblue;
 }
 
@@ -154,6 +156,7 @@ a:visited {
     position: sticky;
     top: 0px;
     padding-top: 10px;
+    
     background-color: var(--background-color);
     transition: background-color var(--background-transition-speed);
 }
@@ -185,6 +188,9 @@ a:visited {
 
 
     align-self: flex-start;
+
+    transition: color var(--background-transition-speed);
+    transition: background-color var(--background-transition-speed);
     
     /* display: flex; */
 
@@ -233,7 +239,9 @@ Not sure if this is best approach or not*/
     min-width: 25%;
     width: 100%;
     flex-shrink: 2;
+    /* transitions seem to be hard for default sliders TODO */
 }
+
 .slider-container p {
     color: var(--text-color);
     transition: color 600ms;

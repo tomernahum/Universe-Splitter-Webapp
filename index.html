@@ -4,17 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Universe Splitter Webapp</title>
-    <link rel="manifest" href="./manifest.json">
-    
-    <meta name="title" content="Universe Splitter Webapp">
-    <meta name="description" content="Free Universe Splitter Online. Split the universe with a quantum random number generator. Soon to have multiple splitting sources.
-    (PWA: works on android, iphone, and the web)">
-    <meta name="keywords" content="Universe Splitter Online, Universe Splitter Unofficial, Universe Splitter Free, Quantum random number generator, coin flip simulator, decision maker, Universe Splitter app, universe splitter android app, universe spliter, younivers spliter, universe splitting app, open source projects, progressive web app, frontend, vanilla js, apis, online tools,">
-    <!-- ^Im just guessing at that mostly it probably doesnt even do anything lol -->
-    <!-- Needs to be on the page for google to look at it I think -->
-
     <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
@@ -24,31 +13,20 @@
     <meta name="msapplication-config" content="/images/icons/browserconfig.xml">
     <meta name="theme-color" content="#35235e">
 
-    <link rel="stylesheet" href="style.css">
-    <script src="./script.js" defer></script>
     
-</head>
+    <title>Universe Splitter Webapp</title>
+    <link rel="manifest" href="./manifest.json">
+    
+    <meta name="title" content="Universe Splitter Webapp">
+    <meta name="description" content="Free Universe Splitter Online. Split the universe with a quantum random number generator. Soon to have multiple splitting sources.
+    (PWA: works on android, iphone, and the web)">
+    <meta name="keywords" content="Universe Splitter Online, Universe Splitter Unofficial, Universe Splitter Free, Quantum random number generator, coin flip simulator, decision maker, Universe Splitter app, universe splitter android app, universe spliter, younivers spliter, universe splitting app, open source projects, progressive web app, frontend, vanilla js, apis, online tools, Universe Splitter Free Online">
+    <!-- ^Im just guessing at that mostly it probably doesnt even do anything lol -->
+    <!-- Needs to be on the page for google to look at it I think -->
 
-<body class="dark no-transition">
+
+    <!-- Theme detection, blocks rest of page loading until this is run -->
     <script>
-        //------- Set theme based on remembered preference---------
-        // I am planning to change this out for another solution later
-        window.addEventListener("DOMContentLoaded", ()=>{
-            setInitialTheme()
-        })
-
-        async function setInitialTheme(override=null){
-            const preferredThemeLocalStorage = override || localStorage.getItem("preferred_theme")
-                                               ||  getInitialPreferredThemeAndUpdateLocalStorage()
-
-            body.classList.add("no-transition") //turn off css animations
-            // console.log("Hello")
-            setTheme(preferredThemeLocalStorage)
-            // console.log("Set it")
-            body.offsetHeight; // Trigger a reflow, flushing the CSS changes (copied from stackoverflow)
-            body.classList.remove("no-transition") //turn back on css animations
-        }
-
         function getInitialPreferredThemeAndUpdateLocalStorage(){
             const systemPreferredThemeIsDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
             if (systemPreferredThemeIsDark){
@@ -58,18 +36,31 @@
             localStorage.setItem("preferred_theme", "light")
             return "light"
         }
+
+        const preferredTheme = localStorage.getItem("preferred_theme")
+                               || getInitialPreferredThemeAndUpdateLocalStorage()
         
-        /**
-        * @param {string} theme should be dark or light
-        */
-        function setTheme(theme){
-            if (body.classList.contains("light")) {
-                body.classList.replace('light', theme)
-            }
-            else {
-                body.classList.replace('dark', theme)
-            }
-        }
+        console.log("HI1", preferredTheme)
+        document.documentElement.dataset.theme = preferredTheme
+
+        //need to load with no transition to load right 100% of time on firefox (only tested on chromium & firefox)
+        window.addEventListener("load", () => {
+            document.body.classList.remove("no-transition")
+        })
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js" defer></script>
+    
+</head>
+
+
+
+<body class="no-transition">
+    <script>
+        window.addEventListener("load", () => {
+            document.body.classList.remove("no-transition")
+        })
     </script>
     
     <div id="theme-toggle">
@@ -101,6 +92,7 @@
                 <span class="loading-image-container">
                     <img class="loading-image"
                     src="./Spinner-1s-200px.gif" alt="">
+                    <!-- ^Slow? -->
                 </span>
             </div>
 

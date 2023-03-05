@@ -82,14 +82,14 @@ async function onButtonClick(e) {
     }
 
     toggleLoading(true)
-    
+
     try {
         const universeNumber = await splitUniverse()
         // output(`You are in Universe ${universeNumber}`)
         output(`You are in Universe ${universeNumber}/${window.numUniverses}`)
     }
     catch (error) {
-        output(`error splitting the universe: ${error}`)
+        output(`error splitting the universe: ${error}`)    
     }
     
     toggleLoading(false)
@@ -120,12 +120,12 @@ const sliderDisplay2 = mainDiv.querySelector(".slider-container .num-universes-d
 
 sliderDisplay2.innerText = slider2.value;
 
-console.log(slider2)
+// console.log(slider2)
 slider2.addEventListener("input", (e)=> {
     const slider = e.currentTarget
     const value = slider2.value
     
-    console.log(value)
+    // console.log(value)
     sliderDisplay2.innerText = value;
 })
 
@@ -160,18 +160,11 @@ slider2.addEventListener("input", (e)=> {
 
 function onThemeButtonClick(){
     toggleTheme()
-    localStorage.setItem("preferred_theme",getCurrentTheme())
+    localStorage.setItem("preferred_theme", getCurrentTheme())
 }
 
 function getCurrentTheme(){
-    if (body.classList.contains("light")) {
-        return "light"
-    }
-    else if  (body.classList.contains("dark")){
-        return "dark"
-    }
-    console.error("Theme broken")
-    return "dark"
+    return document.documentElement.dataset.theme
 }
 
 function toggleTheme(){
@@ -187,12 +180,7 @@ function toggleTheme(){
 * @param {string} theme should be dark or light
 */
 function setTheme(theme){
-    if (body.classList.contains("light")) {
-        body.classList.replace('light', theme)
-    }
-    else {
-        body.classList.replace('dark', theme)
-    }
+    document.documentElement.dataset.theme = theme
 }
 //
 
