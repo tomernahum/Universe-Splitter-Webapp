@@ -15,6 +15,7 @@ if ("serviceWorker" in navigator){
 // ----------------------------------------------
 
 
+console.log("Hello");
 
 //TODO: organize this stuff better
 const body = document.querySelector("body")
@@ -78,7 +79,8 @@ function toggleLoading(on) {
 async function onButtonClick(e) {
 
     async function splitUniverse() {
-        return await splitUniverseANUOldApi()
+        // return await splitUniverseANUOldApi()
+        return await splitUniverseCloudflareWorker(window.numUniverses);
     }
 
     toggleLoading(true)
@@ -202,7 +204,7 @@ function splitUniverseFake() {
     return Math.floor((Math.random() * window.numUniverses)) + 1;
 }
 
-async function splitUniverseANUOldApi() {  //its called old cause there gonna deprecate the api and start charging for it
+async function splitUniverseANUOldApi() {  //Currently only lets clients do 1 request per minute or something
     const fetchAnuJsonPromise = new Promise((resolve, reject) => {
         fetch('https://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint8')
         .then((response) => {
@@ -241,5 +243,14 @@ async function splitUniverseANUOldApi() {  //its called old cause there gonna de
     
 }
 
+/**
+ * @param {number} numUniverses the total numnber of universes
+ * @returns {Promise<number>} the universe number
+ */
+async function splitUniverseCloudflareWorker(numUniverses) {
+    return await fetch(`https://split-universe.cloudflare-473.workers.dev/?numUniverses=${numUniverses}`)
+        .then(response => response.json())
+        .then(response => response.result[0])
 
+}
 
