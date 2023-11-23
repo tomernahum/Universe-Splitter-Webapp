@@ -15,6 +15,7 @@ if ("serviceWorker" in navigator){
 // ----------------------------------------------
 
 
+console.log("Hello");
 
 //TODO: organize this stuff better
 const body = document.querySelector("body")
@@ -78,18 +79,19 @@ function toggleLoading(on) {
 async function onButtonClick(e) {
 
     async function splitUniverse() {
-        return await splitUniverseANUOldApi()
+        // return await splitUniverseANUOldApi()
+        return await splitUniverseCloudflareWorker(window.numUniverses);
     }
 
     toggleLoading(true)
-    
+
     try {
         const universeNumber = await splitUniverse()
         // output(`You are in Universe ${universeNumber}`)
         output(`You are in Universe ${universeNumber}/${window.numUniverses}`)
     }
     catch (error) {
-        output(`error splitting the universe: ${error}`)
+        output(`error splitting the universe: ${error}`)    
     }
     
     toggleLoading(false)
@@ -120,12 +122,12 @@ const sliderDisplay2 = mainDiv.querySelector(".slider-container .num-universes-d
 
 sliderDisplay2.innerText = slider2.value;
 
-console.log(slider2)
+// console.log(slider2)
 slider2.addEventListener("input", (e)=> {
     const slider = e.currentTarget
     const value = slider2.value
     
-    console.log(value)
+    // console.log(value)
     sliderDisplay2.innerText = value;
 })
 
@@ -160,18 +162,11 @@ slider2.addEventListener("input", (e)=> {
 
 function onThemeButtonClick(){
     toggleTheme()
-    localStorage.setItem("preferred_theme",getCurrentTheme())
+    localStorage.setItem("preferred_theme", getCurrentTheme())
 }
 
 function getCurrentTheme(){
-    if (body.classList.contains("light")) {
-        return "light"
-    }
-    else if  (body.classList.contains("dark")){
-        return "dark"
-    }
-    console.error("Theme broken")
-    return "dark"
+    return document.documentElement.dataset.theme
 }
 
 function toggleTheme(){
@@ -187,12 +182,7 @@ function toggleTheme(){
 * @param {string} theme should be dark or light
 */
 function setTheme(theme){
-    if (body.classList.contains("light")) {
-        body.classList.replace('light', theme)
-    }
-    else {
-        body.classList.replace('dark', theme)
-    }
+    document.documentElement.dataset.theme = theme
 }
 //
 
@@ -214,7 +204,7 @@ function splitUniverseFake() {
     return Math.floor((Math.random() * window.numUniverses)) + 1;
 }
 
-async function splitUniverseANUOldApi() {  //its called old cause there gonna deprecate the api and start charging for it
+async function splitUniverseANUOldApi() {  //Currently only lets clients do 1 request per minute or something
     const fetchAnuJsonPromise = new Promise((resolve, reject) => {
         fetch('https://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint8')
         .then((response) => {
@@ -253,5 +243,14 @@ async function splitUniverseANUOldApi() {  //its called old cause there gonna de
     
 }
 
+/**
+ * @param {number} numUniverses the total numnber of universes
+ * @returns {Promise<number>} the universe number
+ */
+async function splitUniverseCloudflareWorker(numUniverses) {
+    return await fetch(`https://split-universe.cloudflare-473.workers.dev/?numUniverses=${numUniverses}`)
+        .then(response => response.json())
+        .then(response => response.result[0])
 
+}
 
