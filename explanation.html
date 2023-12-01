@@ -17,6 +17,32 @@
     <meta name="msapplication-config" content="/images/icons/browserconfig.xml">
     <meta name="theme-color" content="#35235e">
 
+    <!-- Theme detection, blocks rest of page loading until this is run -->
+    <script>
+        function getInitialPreferredThemeAndUpdateLocalStorage(){
+            const systemPreferredThemeIsDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            if (systemPreferredThemeIsDark){
+                localStorage.setItem("preferred_theme", "dark")
+                return "dark"
+            }
+            localStorage.setItem("preferred_theme", "light")
+            return "light"
+        }
+
+        const preferredTheme = localStorage.getItem("preferred_theme")
+                               || getInitialPreferredThemeAndUpdateLocalStorage()
+        
+        console.log("HI1", preferredTheme)
+        document.documentElement.dataset.theme = preferredTheme
+
+        //need to load with no transition to load right 100% of time on firefox (only tested on chromium & firefox)
+        window.addEventListener("load", () => {
+            document.body.classList.remove("no-transition")
+        })
+    </script>
+    <script src="themeButton.js" defer></script>
+
+
     <link rel="stylesheet" href="style.css"> 
     <style>
         /* Base Style loaded above --kind of quick and dirty*/
@@ -24,32 +50,11 @@
             font-size: calc(var(--font-size)* 0.7);
         }
     </style>
-    <script>
-        //Duplicate code in here for now. TODO: break js into modules and make it reusable across different pages
-        
-        let body;
-        window.addEventListener("DOMContentLoaded", () => {
-            const themeButton = document.querySelector("#theme-toggle")
-            themeButton.addEventListener("click", toggleTheme);
-            
-            body = document.querySelector("body")
-        })
-        
-
-        function toggleTheme(){
-            if (body.classList.contains("light")) {
-                body.classList.replace('light', 'dark')
-            }
-            else {
-                body.classList.replace('dark', 'light')
-            }
-        }
-    </script>
 
     <link rel="stylesheet" href="./style.css">
     
 </head>
-<body class="dark">
+<body class="dark no-transition">
     <div id="theme-toggle">
     
         <button id="light-button">
