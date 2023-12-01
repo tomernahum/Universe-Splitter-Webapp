@@ -30,11 +30,11 @@ const loadingImg = mainDiv.querySelector(".loading-image")
 const slider = mainDiv.querySelector(".slider-container .slider")
 const sliderDisplay = mainDiv.querySelector(".slider-container .num-universes-display")
 
-window.onload = () => {
+window.addEventListener("load", () => {
 //     const mainDiv = document.querySelector("#main-div")
 //     const outputArea = mainDiv.querySelector(".output-area")
 //     const mainButton = mainDiv.querySelector(".main-button")
-    themeButton.addEventListener("click", onThemeButtonClick)
+    
     slider.addEventListener("input", onSliderChange)
 
     //mainButton.addEventListener("click", onButtonClick)
@@ -48,7 +48,7 @@ window.onload = () => {
     window.numUniverses = slider.value
 
     //setInitialTheme()
-}
+})
 
 
 
@@ -157,34 +157,6 @@ slider2.addEventListener("input", (e)=> {
 //     //setInitialTheme()
 // })
 
-
-
-
-function onThemeButtonClick(){
-    toggleTheme()
-    localStorage.setItem("preferred_theme", getCurrentTheme())
-}
-
-function getCurrentTheme(){
-    return document.documentElement.dataset.theme
-}
-
-function toggleTheme(){
-    if (getCurrentTheme() === "light") {
-        setTheme("dark")
-    }
-    else {
-        setTheme("light")
-    }
-}
-
-/**
-* @param {string} theme should be dark or light
-*/
-function setTheme(theme){
-    document.documentElement.dataset.theme = theme
-}
-//
 
 
 // 

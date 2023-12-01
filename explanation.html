@@ -17,6 +17,32 @@
     <meta name="msapplication-config" content="/images/icons/browserconfig.xml">
     <meta name="theme-color" content="#35235e">
 
+    <!-- Theme detection, blocks rest of page loading until this is run -->
+    <script>
+        function getInitialPreferredThemeAndUpdateLocalStorage(){
+            const systemPreferredThemeIsDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            if (systemPreferredThemeIsDark){
+                localStorage.setItem("preferred_theme", "dark")
+                return "dark"
+            }
+            localStorage.setItem("preferred_theme", "light")
+            return "light"
+        }
+
+        const preferredTheme = localStorage.getItem("preferred_theme")
+                               || getInitialPreferredThemeAndUpdateLocalStorage()
+        
+        console.log("HI1", preferredTheme)
+        document.documentElement.dataset.theme = preferredTheme
+
+        //need to load with no transition to load right 100% of time on firefox (only tested on chromium & firefox)
+        window.addEventListener("load", () => {
+            document.body.classList.remove("no-transition")
+        })
+    </script>
+    <script src="themeButton.js" defer></script>
+
+
     <link rel="stylesheet" href="style.css"> 
     <style>
         /* Base Style loaded above --kind of quick and dirty*/
@@ -24,32 +50,11 @@
             font-size: calc(var(--font-size)* 0.7);
         }
     </style>
-    <script>
-        //Duplicate code in here for now. TODO: break js into modules and make it reusable across different pages
-        
-        let body;
-        window.addEventListener("DOMContentLoaded", () => {
-            const themeButton = document.querySelector("#theme-toggle")
-            themeButton.addEventListener("click", toggleTheme);
-            
-            body = document.querySelector("body")
-        })
-        
-
-        function toggleTheme(){
-            if (body.classList.contains("light")) {
-                body.classList.replace('light', 'dark')
-            }
-            else {
-                body.classList.replace('dark', 'light')
-            }
-        }
-    </script>
 
     <link rel="stylesheet" href="./style.css">
     
 </head>
-<body class="dark">
+<body class="dark no-transition">
     <div id="theme-toggle">
     
         <button id="light-button">
@@ -62,7 +67,7 @@
     </div>
     <div id="main-div">
         <div class="container">
-            <h1>Explanation of Universe Splitting</h1>
+            <h1 >Explanation of Universe Splitting</h1>
             <p>I haven't written this yet.</p>
             <p>Check out these explanations that our competitors have written:</p>
             <ul>
@@ -77,6 +82,25 @@
                     </a>
                 </li>
             </ul>
+        </div>
+        <br>
+        <br>
+        <div class="container">
+            <h2 style="margin-bottom: 10px">How this website works</h2>
+            <p>This website currently uses 
+                <a href="http://qrng.ethz.ch" target="_blank" rel="noopener noreferrer">the ETH Zürich QRNG API </a> 
+                to split the universe, which in turn uses a 
+                <a href="https://www.idquantique.com/random-number-generation/products/quantis-qrng-chips/"target="_blank" rel="noopener noreferrer">
+                Quantis</a>
+                device, 
+                <a href="https://www.cheapuniverses.com/cheapuniverses.c.html">which is the same thing used by the OG universe splitter mobile app</a>.
+            </p>
+            <br>    
+            <p>
+                We formerly used the 
+                <a href="https://qrng.anu.edu.au/"  target="_blank" rel="noopener noreferrer">ANU QRNG API</a>, 
+                but the free version that we were using was deprecated.
+            </p>
         </div>
     </div>
     
