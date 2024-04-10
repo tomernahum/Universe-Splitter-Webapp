@@ -2,7 +2,7 @@
 
 //ts-check
 
-const CACHE_NAME = "cache-v3"; //have to change version number to update the cache. I feel there has to be a better way / a way to do this automatically but it was too hard to find and I dont want to use workbox. Seems to me you could do this essentially with 2 caches automatically or update the 1 cache for next time right after you return from it so its speedy return but updated if the user is online
+const CACHE_NAME = "cache-v4"; //have to change version number to update the cache. I feel there has to be a better way / a way to do this automatically but it was too hard to find and I dont want to use workbox. Seems to me you could do this essentially with 2 caches automatically or update the 1 cache for next time right after you return from it so its speedy return but updated if the user is online
 const RESOURCES_TO_PRECACHE = [
     "/",
     "/index.html",

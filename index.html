@@ -24,6 +24,9 @@
     <!-- ^Im just guessing at that mostly it probably doesnt even do anything lol -->
     <!-- Needs to be on the page for google to look at it I think -->
 
+    <!-- Umami analytics -->
+    <script defer src="https://umami.ttools.io/script.js" data-website-id="a1d60aa5-ef0b-4b65-aa86-2bcaed350e9d"></script>
+
 
     <!-- Theme detection, blocks rest of page loading until this is run -->
     <script>
@@ -85,7 +88,9 @@
         <form class="button-and-slider-container container">
             <div class="main-button-container">
                 <button class="main-button"
-                aria-label="Split Universe">
+                aria-label="Split Universe"
+                data-umami-event="click split universe button"
+                >
                     <p>
                         Split Universe
                     </p>
@@ -99,7 +104,7 @@
 
             <div class="slider-container">
                 <input class="slider" type="range" min="1" max="10" value="2"
-                aria-label="Number of Universes Slider">
+                aria-label="Number of Universes Slider" data-umami-event="number-unierses-slider">
                 <p>
                     <span class="num-universes-display"> 2 </span>
                 </p>
