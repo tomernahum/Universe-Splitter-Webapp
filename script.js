@@ -89,14 +89,14 @@ async function onButtonClick(e) {
         const universeNumber = await splitUniverse()
         // output(`You are in Universe ${universeNumber}`)
         output(`You are in Universe ${universeNumber}/${window.numUniverses}`)
+        window.umami.track('successfully split universe', {universeNumber});
     }
     catch (error) {
         output(`error splitting the universe: ${error}`)    
+        window.umami.track('error splitting universe', {error: error.toString()});
     }
     
     toggleLoading(false)
-    
-    
 }   
 
 
