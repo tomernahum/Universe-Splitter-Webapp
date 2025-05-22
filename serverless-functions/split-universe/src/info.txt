@@ -12,3 +12,4 @@ ethz seems to be down, previously could not be accessed within a browser http://
 for now I have switched to this api (credit universesplitterunofficial app, no affiliation, for listing it in their github): qrandom.io
 
 they do not seem to have the cors header required for me to just call their api from the browser client... hold on
+
