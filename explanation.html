@@ -87,21 +87,38 @@
         <br>
         <div class="container">
             <h2 style="margin-bottom: 10px">How this website works</h2>
-            <p>This website currently uses 
+            <p>This website uses quantum random number generator (qrng) sources to split the universe.</p>
+            <br>
+            <p>We currently use 
+                <a href="https://qrandom.io/" target="_blank" rel="noopener noreferrer">qrandom.io</a> as the source of the numbers, which is a (q)random website which we found (thanks to unaffiliated competitor android app <a href="https://github.com/tomicooler/UniverseSplitterUnofficial">UniverseSplitterUnofficial</a>'s github repo's readme)
+            </p>
+            <br>
+            <p>This website formerly used
                 <a href="http://qrng.ethz.ch" target="_blank" rel="noopener noreferrer">the ETH Zürich QRNG API </a> 
                 to split the universe, which in turn uses a 
                 <a href="https://www.idquantique.com/random-number-generation/products/quantis-qrng-chips/"target="_blank" rel="noopener noreferrer">
                 Quantis</a>
                 device, 
                 <a href="https://www.cheapuniverses.com/cheapuniverses.c.html">which is the same thing used by the OG universe splitter mobile app</a>.
+                <br>
+                But it seems to have gone down
             </p>
             <br>    
             <p>
-                We formerly used the 
+                We also formerly used the 
                 <a href="https://qrng.anu.edu.au/"  target="_blank" rel="noopener noreferrer">ANU QRNG API</a>, 
-                but the free version that we were using was deprecated.
+                but the free version that we were using was deprecated / rate limited to 1 request per minute, and we have yet to implement caching large sets of numbers on our server (maybe we should).
             </p>
+
+            <!-- noreferrer is better for user privacy, but not including it could also lead to the target website noticing us, which could be a good thing...-->
         </div>
+        <br>
+        <br>
+        <div class="container">
+            <p style="font-size: calc(var(--font-size)* 0.8); font-weight: bold">If the splitter is not working, email me to report the outage and I will try to fix it!</p>
+            <p><a href="mailto: contact@ttools.io">Email</a></p>
+        </div>
+        <br><br><br>
     </div>
     
 </body>
