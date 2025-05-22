@@ -45,7 +45,6 @@ export default {
 		const fetchPromise = fetch(`https://qrandom.io/api/random/ints?min=1&max=${numUniverses}&n=${numResults}`)
 			.then((response) => response.json())
 			.then((jsonData) => {
-				console.log("HII",jsonData)
 				return {
 					result: jsonData.numbers // convert to the api the client already expects
 				};
