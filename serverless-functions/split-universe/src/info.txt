@@ -1,0 +1,14 @@
+ANU QRNG API is limited to 1 request per minute
+example: https://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint8 (also look at git history for whatever I really used)
+
+
+we can request lots of numbers and cache them though if we want, though we don't currently do that
+    good excuse to learn durable objects, or learn go or something, or redis, or even vibe coding
+we can also use their paid aws api instead (but would want to do above anyway to save)
+
+
+ethz seems to be down, previously could not be accessed within a browser http://qrng.ethz.ch/api/randint?min=1&max=${numUniverses}&size=${numResults}
+
+for now I have switched to this api (credit universesplitterunofficial app, no affiliation, for listing it in their github): qrandom.io
+
+they do not seem to have the cors header required for me to just call their api from the browser client... hold on

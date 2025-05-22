@@ -24,23 +24,34 @@ export default {
 		const size = searchParams.get('size');
 		const numResults = size || 1;
 
-		const fetchPromise = new Promise((resolve, reject) => {
-			fetch(`http://qrng.ethz.ch/api/randint?min=1&max=${numUniverses}&size=${numResults}&`)
-				.then((response) => {
-					if (!(response.ok)) {
-						reject("problem connecting to ETHZ quantum server")
-					}
-					return response.json()  // response.json() returns another promise
-				})
+		// const fetchPromise = new Promise((resolve, reject) => {
+		// 	fetch(`http://qrng.ethz.ch/api/randint?min=1&max=${numUniverses}&size=${numResults}&`)
+		// 		.then((response) => {
+		// 			if (!(response.ok)) {
+		// 				reject("problem connecting to ETHZ quantum server")
+		// 			}
+		// 			return response.json()  // response.json() returns another promise
+		// 		})
 				
-				.then((jsonData) => {
-					resolve(jsonData)
-				})
-				.catch(error => {
-					reject(error)
-				})
+		// 		.then((jsonData) => {
+		// 			resolve(jsonData)
+		// 		})
+		// 		.catch(error => {
+		// 			reject(error)
+		// 		})
 
-		})
+		// })
+
+		const fetchPromise = fetch(`https://qrandom.io/api/random/ints?min=1&max=${numUniverses}&n=${numResults}`)
+			.then((response) => response.json())
+			.then((jsonData) => {
+				console.log("HII",jsonData)
+				return {
+					result: jsonData.numbers // convert to the api the client already expects
+				};
+			});
+			
+		
 
 		//this follows cloudflare worker's json example
 		const jsonResponse = JSON.stringify(await fetchPromise, null, 2)
