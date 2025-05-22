@@ -223,6 +223,16 @@ async function splitUniverseCloudflareWorker(numUniverses) {
     return await fetch(`https://split-universe.cloudflare-473.workers.dev/?numUniverses=${numUniverses}`)
         .then(response => response.json())
         .then(response => response.result[0])
-
 }
 
+/**
+ * @param {number} numUniverses the total numnber of universes
+ * @returns {Promise<number>} the universe number
+ */
+async function splitUniverseCloudflareWorker(numUniverses) {
+    const API_URL = `https://split-universe.cloudflare-473.workers.dev/`
+    // const API_URL = `http://localhost:8787/`
+    return await fetch(`${API_URL}?numUniverses=${numUniverses}`)
+        .then(response => response.json())
+        .then(response => response.result[0]) // this massaging should have been done in the worker, and ideally the api should have been typesafe or defined more explicitly somewhere, if that wouldn't be to much work. also I would rename the param field. 
+}
